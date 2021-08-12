@@ -9,13 +9,13 @@
           [:meta {:content "width=device-width, initial-scale=1", :name "viewport"}]
           [:title "TodoMVC"]
           (include-css "https://unpkg.com/todomvc-app-css@2.4.1/index.css")
-          (include-js "https://unpkg.com/htmx.org@1.5.0")]
+          (include-js "https://unpkg.com/htmx.org@1.5.0")
+          (include-js "https://unpkg.com/hyperscript.org@0.8.1")]
          [:body
           [:section.todoapp
            [:header.header
             [:h1 "todos"]
-            [:input.new-todo
-             {:autofocus "autofocus", :placeholder "What needs to be done?"}]]
+            (views.todo/new)]
            "<!-- This section should be hidden by default and shown when there are todos -->"
            [:section.main
             [:input#toggle-all.toggle-all {:type "checkbox"}]
@@ -34,10 +34,5 @@
             [:button.clear-completed "Clear completed"]]]
           [:footer.info
            [:p "Double-click to edit a todo"]
-           "<!-- Remove the below line ↓ -->"
-           [:p
-            "Template by "
-            [:a {:href "http://sindresorhus.com"} "Sindre Sorhus"]]
-           "<!-- Change this out with your name and url ↓ -->"
-           [:p "Created by " [:a {:href "http://todomvc.com"} "you"]]
+           [:p "Created by " [:a {:href "https://github.com/quan-nh/todomvc"} "Quan"]]
            [:p "Part of " [:a {:href "http://todomvc.com"} "TodoMVC"]]]]))
