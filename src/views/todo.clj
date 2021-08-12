@@ -31,3 +31,8 @@
   [:ul#todo-list.todo-list
    (for [todo todos]
      (view todo))])
+
+(defn items-left [todos]
+  [:span#todo-count.todo-count {:hx-swap-oob "true"}
+   [:strong (->> todos (remove :completed?) count)]
+   " item left"])

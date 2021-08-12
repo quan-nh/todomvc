@@ -23,8 +23,7 @@
             (views.todo/list todos)]
            "<!-- This footer should be hidden by default and shown when there are todos -->"
            [:footer.footer
-            "<!-- This should be `0 items left` by default -->"
-            [:span.todo-count [:strong "0"] " item left"]
+            (views.todo/items-left todos)
             "<!-- Remove this if you don't implement routing -->"
             [:ul.filters
              [:li [:a.selected {:href "#/"} "All"]]
