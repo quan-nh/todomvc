@@ -30,7 +30,7 @@
              [:li [:a {:href "#/active"} "Active"]]
              [:li [:a {:href "#/completed"} "Completed"]]]
             "<!-- Hidden if no completed items are left ↓ -->"
-            [:button.clear-completed "Clear completed"]]]
+            (views.todo/clear-completed-btn todos)]]
           [:footer.info
            [:p "Double-click to edit a todo"]
            [:p "Created by " [:a {:href "https://github.com/quan-nh/todomvc"} "Quan"]]

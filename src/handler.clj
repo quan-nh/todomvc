@@ -15,9 +15,21 @@
   (html (todo/view (db/update-todo id title))))
 
 (defn toggle-todo [id]
-  (html (todo/view (db/toggle-todo id))
-        (todo/items-left (db/todo-list))))
+  (let [todo (db/toggle-todo id)
+        todos (db/todo-list)]
+    (html (todo/view todo)
+          (todo/items-left todos)
+          (todo/clear-completed-btn todos))))
 
 (defn delete-todo [id]
   (db/delete-todo id)
-  (html (todo/items-left (db/todo-list))))
+  (let [todos (db/todo-list)]
+    (html (todo/items-left todos)
+          (todo/clear-completed-btn todos))))
+
+(defn clear-completed-todo []
+  (db/remove-completed-todo)
+  (let [todos (db/todo-list)]
+    (html (todo/list todos)
+          (todo/items-left todos)
+          (todo/clear-completed-btn todos))))

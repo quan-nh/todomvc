@@ -12,6 +12,7 @@
   (PUT "/todos/:id" [id :<< as-int title] (handler/update-todo id title))
   (PATCH "/todos/:id" [id :<< as-int] (handler/toggle-todo id))
   (DELETE "/todos/:id" [id :<< as-int] (handler/delete-todo id))
+  (DELETE "/todos/completed" [] (handler/clear-completed-todo))
   (route/not-found "Page not found"))
 
 (defn run [opts]

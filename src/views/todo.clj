@@ -36,3 +36,12 @@
   [:span#todo-count.todo-count {:hx-swap-oob "true"}
    [:strong (->> todos (remove :completed?) count)]
    " item left"])
+
+(defn clear-completed-btn [todos]
+  [:button#clear-completed.clear-completed
+   {:hx-delete "/todos/completed"
+    :hx-target "#todo-list"
+    :hx-swap "outerHTML"
+    :hx-swap-oob "true"
+    :class (when (->> todos (filter :completed?) count zero?) "hidden")}
+   "Clear completed"])

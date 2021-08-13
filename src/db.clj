@@ -28,3 +28,8 @@
 
 (defn delete-todo [id]
   (swap! todos dissoc id))
+
+(defn remove-completed-todo []
+  (reset! todos (->> @todos
+                     (remove #(:completed? (val %)))
+                     (into (sorted-map)))))
