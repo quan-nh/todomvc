@@ -4,7 +4,11 @@
             [compojure.coercions :refer [as-int]]
             [handler]
             [ring.adapter.jetty :refer [run-jetty]]
-            [ring.middleware.params :refer [wrap-params]]))
+            [ring.middleware.params :refer [wrap-params]]
+            [clojure.java.io :as io]
+            [selmer.parser :as selmer]))
+
+(selmer/set-resource-path! (io/resource "templates"))
 
 (defroutes routes
   (GET "/" [] (handler/index))

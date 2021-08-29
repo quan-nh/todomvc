@@ -1,11 +1,11 @@
 (ns handler
   (:require [db]
+            [selmer.parser :as selmer]
             [hiccup.core :refer [html]]
-            [views.todo :as todo]
-            [views.index :as index]))
+            [views.todo :as todo]))
 
 (defn index []
-  (html (index/render-page (db/todo-list))))
+  (selmer/render-file "index.html" {:todos (db/todo-list)}))
 
 (defn new-todo [title]
   (html (todo/view (db/new-todo title))
